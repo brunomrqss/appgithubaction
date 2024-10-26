@@ -1,0 +1,39 @@
+name: Python CI
+
+# aciona o workflow de quaisquer push ou pull request para branch main
+on: 
+# durante um evento, como push ou pull request na branch main, irá realizar algumas tarefas     
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+# tarefas a serem realizadas
+jobs: 
+    test:
+        # rodará a primeira tarefa que é um teste no ubuntu-latest que será um container
+        # podemos utilizar tambem windows ou mac-os como container para rodar 
+        runs-on: ubuntu-latest 
+
+        steps:
+            # etapa 1: verifica o código do repositório
+            - name: Check out code
+              uses: actions/checkout@v2  # @v2 githubaction
+        
+            # etapa 2: configura o ambiente python
+            - name: Set up python
+              uses: actions/setup-python@v2 
+              with: 
+                python-version: '3.8' # define a versão do python
+
+            # etapa 3: instala as dependencias 
+            - name: Install dependencies
+              run: 
+                python -m pip install --upgrade pip 
+                pip install -r requirements.txt 
+
+            # etapa 4: executa os testes
+            - name: Run tests
+              run: pytest
