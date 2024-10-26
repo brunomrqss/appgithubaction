@@ -20,11 +20,11 @@ jobs:
         steps:
             # etapa 1: verifica o código do repositório
             - name: Check out code
-              uses: actions/checkout@v2  # @v2 githubaction
+              uses: actions/checkout@v3  # @v2 githubaction
         
             # etapa 2: configura o ambiente python
             - name: Set up python
-              uses: actions/setup-python@v2 
+              uses: actions/setup-python@v3 
               with: 
                 python-version: '3.8' # define a versão do python
 
