@@ -31,8 +31,7 @@ jobs:
             # etapa 3: instala as dependencias 
             - name: Install dependencies
               run: 
-                python -m pip install --upgrade pip 
-                python -m pip install -r requirements.txt 
+                pip install -r requirements.txt 
 
             # etapa 4: executa os testes
             - name: Run tests
